@@ -10,21 +10,21 @@ const loader = (loading: boolean) => render({ loading });
 // 注册子应用
 registerMicroApps([
   {
-    name: 'data-center',
-    entry: isProduction ? `//${hostName}/data-center` : '//localhost:8081',
-    container: '#data-center',
-    activeRule: '/data-center',
+    name: 'sfsassui',
+    entry: isProduction ? `//${hostName}/` : '//localhost:8081',
+    container: '#sub-app',
+    activeRule: '/sfsassui',
     loader
   },
   {
     name: 'ai-marketing-platform',
     entry: isProduction ? `//${hostName}/ai_marketing_platform/` : '//localhost:8082',
-    container: '#ai-marketing-platform-container',
+    container: '#sub-app',
     activeRule: '/ai-marketing-platform',
     loader
   }
 ]);
 // 设置子应用
-window.history.pushState(null, '', isProduction ? `//${hostName}/data-center` : '//localhost:8081');
+window.history.pushState(null, '', '/sfsassui');
 // 启动应用
-start();
+start({ sandbox: { strictStyleIsolation: true } });

@@ -14,9 +14,9 @@ const App: React.FC<appProps> = (props) => {
     let hostName: string = window.location.hostname;
     const items: MenuProps['items'] = [
         {
-        key: 'data-center',
+        key: 'sfsassui',
         label: (
-            <a target="_blank" rel="noopener noreferrer" href={isProduction ? `//${hostName}/data-center` : '//localhost:8080'}>
+            <a target="_blank" rel="noopener noreferrer" href={isProduction ? `//${hostName}/` : '//localhost:8080'}>
             数据中台
             </a>
         ),
@@ -32,13 +32,13 @@ const App: React.FC<appProps> = (props) => {
     ]
     return (
         <ConfigProvider locale={zhCN}>
-            <div className="app">
+            <div className="main-app">
                 <header>
-                    <Dropdown menu={{ items }} placement="topLeft" arrow>
+                    <Dropdown menu={{ items }} placement="bottom">
                         <Button>应用</Button>
                     </Dropdown>
                 </header>
-                { loading ? <Spin /> : <div></div> }
+                { loading ? <Spin className="spin" /> : <div id="sub-app"></div> }
             </div>
         </ConfigProvider>
     )
