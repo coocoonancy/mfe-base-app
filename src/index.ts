@@ -11,20 +11,20 @@ const loader = (loading: boolean) => render({ loading });
 registerMicroApps([
   {
     name: 'sfsassui',
-    entry: isProduction ? `//${hostName}/` : '//localhost:8081',
+    entry: isProduction ? `//${hostName}/` : '//localhost:8080',
     container: '#sub-app',
     activeRule: '/sfsassui',
     loader
   },
   {
     name: 'ai-marketing-platform',
-    entry: isProduction ? `//${hostName}/ai_marketing_platform/` : '//localhost:8082',
+    entry: isProduction ? `//${hostName}/ai_marketing_platform/` : '//localhost:8081',
     container: '#sub-app',
     activeRule: '/ai-marketing-platform',
     loader
   }
 ]);
 // 设置子应用
-window.history.pushState(null, '', '/sfsassui');
+window.history.pushState(null, '', '/ai-marketing-platform');
 // 启动应用
 start({ sandbox: { strictStyleIsolation: true } });
