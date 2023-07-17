@@ -1,14 +1,11 @@
-import { registerMicroApps, start } from 'qiankun';
+import { registerMicroApps, setDefaultMountApp, start } from 'qiankun';
 const isProduction = process.env.NODE_ENV === 'production';
 const hostName = window.location.hostname;
-
 import render from './render';
 
 render({ loading: true });
 const loader = (loading: boolean) => render({ loading });
-// 初始化应用
-// 注册子应用
-registerMicroApps([
+export const routes = [
   {
     name: 'sfsassui',
     entry: isProduction ? `//${hostName}/` : '//localhost:8080',
@@ -23,8 +20,11 @@ registerMicroApps([
     activeRule: '/ai-marketing-platform',
     loader
   }
-]);
+];
+// 初始化应用
+// 注册子应用
+registerMicroApps(routes);
 // 设置子应用
-window.history.pushState(null, '', '/ai-marketing-platform');
+setDefaultMountApp('/ai-marketing-platform');
 // 启动应用
 start({ sandbox: { strictStyleIsolation: true } });
