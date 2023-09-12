@@ -1,7 +1,6 @@
 import React from 'react';
 import type { MenuProps } from 'antd';
 import { ConfigProvider, Spin, Button, Dropdown } from 'antd';
-import { routes } from './index';
 import zhCN from 'antd/locale/zh_CN';
 import 'antd/dist/reset.css';
 import './App.css';
@@ -10,7 +9,7 @@ type appProps = {
 }
 
 function goToSubApp<T extends string | URL>(route: T) {
-   window.history.pushState(null, '', route);
+    window.history.pushState(null, '', route);
 }
 
 const App = (props: appProps) => {
@@ -19,7 +18,7 @@ const App = (props: appProps) => {
         {
             key: 'sfsassui',
             label: (
-                <div  onClick={() => goToSubApp('/sfsassui')}>
+                <div onClick={() => goToSubApp('/sfsassui')}>
                     数据中台
                 </div>
             ),

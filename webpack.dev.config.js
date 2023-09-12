@@ -1,5 +1,17 @@
 const path = require('path');
 const ASSET_PATH = process.env.ASSET_PATH || '/';
+const target = {
+  admin: 'https://admin.linklinkiot.com',
+  dev: 'https://dev.linklinkiot.com',
+  devhome: 'https://devhome.linklinkiot.com',
+  devoffice: 'https://devoffice.linklinkiot.com',
+  devbusiness: 'https://devbusiness.linklinkiot.com',
+  home: 'https://home.linklinkiot.com',
+  office: 'https://office.linklinkiot.com',
+  business: 'https://business.linklinkiot.com',
+  euhome: 'https://euhome.linklinkiot.com',
+  euoffice: 'https://euoffice.linklinkiot.com'
+}['devoffice'];
 module.exports = {
     output: {
       filename: '[name].[contenthash].js',
@@ -22,6 +34,47 @@ module.exports = {
       },
       static: {
         directory: path.resolve(__dirname, 'public')
-      }
+      },
+      proxy: [
+        {
+          context: [
+            '/sfsaas',
+            '/cepriplatform',
+            '/vt',
+            '/vtspace',
+            '/vocvtdock',
+            '/dlicense',
+            '/cloudproject',
+            '/officepolicy',
+            '/officemerchant',
+            '/alarmer',
+            '/vtproxy',
+            '/workflow',
+            '/lang',
+            '/devicebill',
+            '/appfront',
+            '/hifive',
+            '/commonredirect',
+            '/officemerchant',
+            '/vtdockone',
+            '/appsync',
+            '/iotvehicle',
+            '/sugarbi/v1',
+            '/peakregulating',
+            '/thirdpartyiot',
+            '/gb28181server'
+          ],
+          target,
+          secure: false,
+          changeOrigin: true
+        },
+        {
+          '/geoconv': {
+            target: 'https://api.map.baidu.com',
+            secure: false,
+            changeOrigin: true
+          }
+        }
+      ]
     }
 }
