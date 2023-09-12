@@ -62,7 +62,8 @@ module.exports = {
             '/sugarbi/v1',
             '/peakregulating',
             '/thirdpartyiot',
-            '/gb28181server'
+            '/gb28181server',
+            'sfadapter'
           ],
           target,
           secure: false,
